@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
@@ -22,7 +19,13 @@
                         <a class="nav-link text-warning" href="#">Page 4</a>
                     </nav>
                 </div>
-                <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
+                <div>
+                    <?php
+                    $xml = simplexml_load_file('source.xml');
+                    
+                    echo var_dump($xml);
+                    echo $xml->title;
+                    ?>
                 </div>
             </div>
         </div>
