@@ -1,4 +1,22 @@
 <?php
+if(!empty($_GET['param'])){
+    $param = $_GET['param'];
+}
+else{
+    $param = 0; 
+}
+echo  $_GET['param'];
+$dom = new DomDocument;
+$dom->load("source.xml");
+$exp = $dom->getElementsByTagName('page');
+ 
+$element = $exp->item($param); // On obtient le noeud de la page
+$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
+ foreach($enfants as $enfant){ // On prend chaque noeud enfant séparément.
+    $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
+        echo $enfant->nodeValue;
+  
+} 
 
 ?>
 <!DOCTYPE html>
@@ -16,10 +34,10 @@
             <div class="row bg-info">
                 <div class="col-2 bg-primary">
                     <nav class="nav flex-column font-weight-bold">
-                        <a class="nav-link text-warning" href="#">Page 1</a>
-                        <a class="nav-link text-warning" href="#">Page 2</a>
-                        <a class="nav-link text-warning" href="#">Page 3</a>
-                        <a class="nav-link text-warning" href="#">Page 4</a>
+                        <a class="nav-link text-warning" href="?param=0">Page 1</a>
+                        <a class="nav-link text-warning" href="?param=1">Page 2</a>
+                        <a class="nav-link text-warning" href="?param=2">Page 3</a>
+                        <a class="nav-link text-warning" href="?param=3">Page 4</a>
                     </nav>
                 </div>
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
