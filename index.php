@@ -1,57 +1,37 @@
-<?php include 'controllerTitle.php'; ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
     <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-         <link href="https://fonts.googleapis.com/css?family=Cinzel|Orbitron" rel="stylesheet">
-         <link rel="icon" type="image/x-icon" href="assets/img/logo.png" /><link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.png" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
-        <title><?= $tab; ?></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
+        <title>Maçonnerie Ocordo</title>
     </head>
     <body>
-           <!--Navbar -->
-            <nav class="navbar fixed-top navbar navbar-expand-md navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-            <a href="index.php"><img class="logo" src="assets/img/logo.png" alt="logo ocordo" title="logo Ocordo"/></a>
-                   
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-align-justify"></i>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!--Navbar fin-->
-            <?php
-// appel du controller php
-            include 'index_controller.php';
-            ?>
-                    </div>
+        <div class="container bg-secondary">
+            <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
+            <div class="row bg-info">
+                <div class="col-2 bg-primary">
+                    <nav class="nav flex-column font-weight-bold">
+                        <a class="nav-link text-warning" href="#">Page 1</a>
+                        <a class="nav-link text-warning" href="#">Page 2</a>
+                        <a class="nav-link text-warning" href="#">Page 3</a>
+                        <a class="nav-link text-warning" href="#">Page 4</a>
+                    </nav>
                 </div>
-            </nav>
-        <!-- Mise en place de l'intro video -->
-        <div class="container content-page">
-            <?= $xml->page[$page]->content; ?>
-            <?php if (isset($_POST['send']) && (count($formError) == 0)) { ?>
-                <?php include('sendMail.php') ?>
-            <?php } else { ?>
-                <p><?= !empty($formError['your-name']) ? $formError['your-name'] : '' ?></p>
-                <p><?= !empty($formError['your-tel-615']) ? $formError['your-tel-615'] : '' ?></p>
-                <p><?= !empty($subjectError) ? $subjectError : '' ?></p>
-                <p><?= !empty($countryError) ? $countryError : '' ?></p>
-                <p><?= !empty($formError['your-message']) ? $formError['your-message'] : '' ?></p>
-                <p><?= !empty($emailError) ? $emailError : '' ?></p>
-            <?php } ?>
+                <div>
+                    <?php
+                    $xml = simplexml_load_file('source.xml');
+                    
+                    echo var_dump($xml);
+                    echo $xml->title;
+                    ?>
+                </div>
+            </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <div>
-            <?php
-            include 'controlFooter.php';
-            ?>
-        </div>
-</body>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
+    </body>
 </html>
