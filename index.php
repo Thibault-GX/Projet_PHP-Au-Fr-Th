@@ -17,7 +17,6 @@ $enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de
         echo $enfant->nodeValue;
   
 } 
-
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
