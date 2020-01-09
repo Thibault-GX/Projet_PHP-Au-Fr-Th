@@ -4,15 +4,20 @@ if (!empty($_GET['param'])) {
 } else {
     $param = 0;
 }
-$dom = new DomDocument;//création objet dom
-$dom->load("source.xml");//chargement du fichier xml
-$exp = $dom->getElementsByTagName('page');//chargement des pages
-$element = $exp->item($param); // On obtient le noeud de la page
-$enfants = $element->childNodes;//réccupération des éléments enfants
-foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
-    $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-    if ($nom == 'title') {
-        $title = $enfant->nodeValue;//réccupération du titre
+$dom = $exp = $element = $enfants = $nom = $title =  $affiche = '';
+
+if (file_exists('source.xml')) {
+    $affiche = true;
+    $dom = new DomDocument; //création objet dom
+    $dom->load("source.xml"); //chargement du fichier xml
+    $exp = $dom->getElementsByTagName('page'); //chargement des pages
+    $element = $exp->item($param); // On obtient le noeud de la page
+    $enfants = $element->childNodes; //réccupération des éléments enfants
+    foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
+        $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
+        if ($nom == 'title') {
+            $title = $enfant->nodeValue; //réccupération du titre
+        }
     }
 }
 ?>
@@ -41,11 +46,13 @@ foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
 
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
-                    //$element = $exp->item($param); // On obtient le noeud de la page
-                    //$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
-                    foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
-                        $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-                        echo $enfant->nodeValue;
+                    if ($affiche) {
+                        //$element = $exp->item($param); // On obtient le noeud de la page
+                        //$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
+                        foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
+                            $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
+                            echo $enfant->nodeValue;
+                        }
                     }
                     ?>
                 </div>
