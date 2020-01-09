@@ -8,6 +8,7 @@
         <title>Maçonnerie Ocordo</title>
     </head>
     <body>
+
         <div class="container bg-secondary">
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
@@ -19,24 +20,26 @@
                         <a class="nav-link text-warning" href="?param=3">Page 4</a>
                     </nav>
                 </div>
-                <div>
+
+                <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
-if(!empty($_GET['param'])){
-    $param = $_GET['param'];
-}
-else{
-    $param = 0; 
-}
-echo  $_GET['param'];
-$dom = new DomDocument;
-$dom->load("source.xml");
-$exp = $dom->getElementsByTagName('page');
- 
-$element = $exp->item($param); // On obtient le noeud de la page
-$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
- foreach($enfants as $enfant){ // On prend chaque noeud enfant séparément.
-    $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-        echo $enfant->nodeValue;
+                    if (!empty($_GET['param'])) {
+                        $param = $_GET['param'];
+                    } else {
+                        $param = 0;
+                    }
+
+                    $dom = new DomDocument;
+                    $dom->load("source.xml");
+                    $exp = $dom->getElementsByTagName('page');
+
+                    $element = $exp->item($param); // On obtient le noeud de la page
+                    $enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
+                    foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
+                        $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
+                        echo $enfant->nodeValue;
+                    }
+
                     ?>
                 </div>
             </div>
