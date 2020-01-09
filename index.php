@@ -46,8 +46,8 @@ if (file_exists('source.xml')) {
          <div class="container bg-secondary">
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
-                <div class="col-2 bg-primary">
-                    <nav class="nav flex-column font-weight-bold">
+                <div class="col-12 bg-primary">
+                    <nav class="nav flex-row font-weight-bold">
                         <?php //boucle pour afficher les menus 
                        for($count = 0; $count < count($libMenu); $count++){ ?>
                         <a class="nav-link text-warning" href="?param=<?=$count?>"><?= $libMenu[$count] ?></a>
