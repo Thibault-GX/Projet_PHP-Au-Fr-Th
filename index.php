@@ -1,21 +1,33 @@
 <?php
-if (!empty($_GET['param'])) {
-    $param = $_GET['param'];
-} else {
+if (!empty($_SERVER['REQUEST_URI'])) {
+    $param = $_SERVER['REQUEST_URI'];
+   
+        $regex= '/[a-zA-Z\/\\\?\.]+/';
+        $out = preg_replace($regex, '', $param);//réccupération du chiffre dans le lien
+        $param = $out - 1;
+    
+   } else {
     $param = 0;
-}
-$dom = $exp = $element = $enfants = $nom = $title =  $affiche = '';
+    //$regex= '/[0-9]+/';
+    //$out = preg_replace($regex, '', $param);//réccupération du chiffre dans le lien
+    //$param = $out - 1;
+   }
+$dom = $exp = $element = $enfants = $nom = $title =  $affiche = $menu ='';
 
 if (file_exists('source.xml')) {
     $affiche = true;
     $dom = new DomDocument; //création objet dom
     $dom->load("source.xml"); //chargement du fichier xml
     $exp = $dom->getElementsByTagName('page'); //chargement des pages
+    
+    
+   
+    
     $element = $exp->item($param); // On obtient le noeud de la page
     $enfants = $element->childNodes; //réccupération des éléments enfants
     foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
         $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-        if ($nom == 'title') {
+         if ($nom == 'title') {
             $title = $enfant->nodeValue; //réccupération du titre
         }
     }
@@ -36,11 +48,11 @@ if (file_exists('source.xml')) {
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
                 <div class="col-2 bg-primary">
-                    <nav class="nav flex-column font-weight-bold">
-                        <a class="nav-link text-warning" href="?param=0">Page 1</a>
-                        <a class="nav-link text-warning" href="?param=1">Page 2</a>
-                        <a class="nav-link text-warning" href="?param=2">Page 3</a>
-                        <a class="nav-link text-warning" href="?param=3">Page 4</a>
+                   <nav class="nav flex-column font-weight-bold">
+                         <a class="nav-link text-warning" href="?page1.html">page1</a>
+                         <a class="nav-link text-warning" href="?page2.html">page2</a>
+                         <a class="nav-link text-warning" href="?page3.html">page3</a>
+                         <a class="nav-link text-warning" href="?page4.html">page4</a>
                     </nav>
                 </div>
 
@@ -64,4 +76,3 @@ if (file_exists('source.xml')) {
         <script src="assets/js/script.js"></script>
     </body>
 </html>
-
