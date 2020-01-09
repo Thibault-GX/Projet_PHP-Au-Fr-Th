@@ -19,7 +19,20 @@ if (file_exists('source.xml')) {
             $title = $enfant->nodeValue; //réccupération du titre
         }
     }
-}
+    
+    //réccupération des valeurs des balises menu
+    $libMenu = []; 
+    $valueMenu1 = '';
+    $count = 0;
+    //pour chaque éléments des balises, on réccupère les valeurs concaténées dans une chaine
+    foreach( $exp as $expvalue )
+    {
+       $xmlMenu = $expvalue->getElementsByTagName( "menu" );
+        $valueMenu = $xmlMenu->item(0)->nodeValue;
+        $libMenu[$count] = $valueMenu;
+        $count ++;
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -31,19 +44,19 @@ if (file_exists('source.xml')) {
         <title><?= $title ?></title>
     </head>
     <body>
-
-        <div class="container bg-secondary">
+         <div class="container bg-secondary">
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
                 <div class="col-2 bg-primary">
                     <nav class="nav flex-column font-weight-bold">
-                        <a class="nav-link text-warning" href="?param=0">Page 1</a>
-                        <a class="nav-link text-warning" href="?param=1">Page 2</a>
-                        <a class="nav-link text-warning" href="?param=2">Page 3</a>
-                        <a class="nav-link text-warning" href="?param=3">Page 4</a>
+                        <?php //boucle pour afficher les menus 
+                       for($count = 0; $count < count($libMenu); $count++){ ?>
+                        <a class="nav-link text-warning" href="?param=<?=$count?>"><?= $libMenu[$count] ?></a>
+                      <?php
+                       } 
+                       ?>
                     </nav>
                 </div>
-
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
                     if ($affiche) {
