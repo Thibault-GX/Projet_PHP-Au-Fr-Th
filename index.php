@@ -63,7 +63,12 @@ if (file_exists('source.xml')) {
                         //$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
                         foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
                             $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-                            echo $enfant->nodeValue;
+                            if ($nom == 'title' || $nom == 'menu') {
+                                $title = $enfant->nodeValue; //réccupération du titre
+                                $enfant->nodeValue = '';
+                            }else{
+                                echo $enfant->nodeValue;
+                            }
                         }
                     }
                     ?>
