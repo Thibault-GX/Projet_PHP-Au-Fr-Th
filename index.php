@@ -1,37 +1,37 @@
 <?php
-if (!empty($_SERVER['REQUEST_URI'])) {
-    $param = $_SERVER['REQUEST_URI'];
-   
-        $regex= '/[a-zA-Z\/\\\?\.]+/';
-        $out = preg_replace($regex, '', $param);//réccupération du chiffre dans le lien
-        $param = $out - 1;
-    
-   } else {
+if (!empty($_GET['param'])) {
+    $param = $_GET['param'];
+} else {
     $param = 0;
-    //$regex= '/[0-9]+/';
-    //$out = preg_replace($regex, '', $param);//réccupération du chiffre dans le lien
-    //$param = $out - 1;
-   }
-$dom = $exp = $element = $enfants = $nom = $title =  $affiche = $menu ='';
-
+}
+$dom = $exp = $element = $enfants = $nom = $title =  $affiche = '';
 if (file_exists('source.xml')) {
     $affiche = true;
     $dom = new DomDocument; //création objet dom
     $dom->load("source.xml"); //chargement du fichier xml
     $exp = $dom->getElementsByTagName('page'); //chargement des pages
-    
-    
-   
-    
     $element = $exp->item($param); // On obtient le noeud de la page
     $enfants = $element->childNodes; //réccupération des éléments enfants
     foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
         $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-         if ($nom == 'title') {
+        if ($nom == 'title') {
             $title = $enfant->nodeValue; //réccupération du titre
         }
     }
-}
+    
+    //réccupération des valeurs des balises menu
+    $libMenu = []; 
+    $valueMenu1 = '';
+    $count = 0;
+    //pour chaque éléments des balises, on réccupère les valeurs concaténées dans une chaine
+    foreach( $exp as $expvalue )
+    {
+       $xmlMenu = $expvalue->getElementsByTagName( "menu" );
+        $valueMenu = $xmlMenu->item(0)->nodeValue;
+        $libMenu[$count] = $valueMenu;
+        $count ++;
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -43,19 +43,19 @@ if (file_exists('source.xml')) {
         <title><?= $title ?></title>
     </head>
     <body>
-
-        <div class="container bg-secondary">
+         <div class="container bg-secondary">
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
                 <div class="col-2 bg-primary">
-                   <nav class="nav flex-column font-weight-bold">
-                         <a class="nav-link text-warning" href="?page1.html">page1</a>
-                         <a class="nav-link text-warning" href="?page2.html">page2</a>
-                         <a class="nav-link text-warning" href="?page3.html">page3</a>
-                         <a class="nav-link text-warning" href="?page4.html">page4</a>
+                    <nav class="nav flex-column font-weight-bold">
+                        <?php //boucle pour afficher les menus 
+                       for($count = 0; $count < count($libMenu); $count++){ ?>
+                        <a class="nav-link text-warning" href="?param=<?=$count?>"><?= $libMenu[$count] ?></a>
+                      <?php
+                       } 
+                       ?>
                     </nav>
                 </div>
-
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
                     if ($affiche) {
