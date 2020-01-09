@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
@@ -21,6 +20,7 @@
                         <a class="nav-link text-warning" href="?param=3">Page 4</a>
                     </nav>
                 </div>
+
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
                     if (!empty($_GET['param'])) {
@@ -39,6 +39,7 @@
                         $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
                         echo $enfant->nodeValue;
                     }
+
                     ?>
                 </div>
             </div>
