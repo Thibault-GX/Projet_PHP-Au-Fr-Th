@@ -1,0 +1,6 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^page1.html$ index.php?param=0
+RewriteRule ^page2.html$ index.php?param=1
+RewriteRule ^page3.html$ index.php?param=2
+RewriteRule ^page4.html$ index.php?param=3 [L]
