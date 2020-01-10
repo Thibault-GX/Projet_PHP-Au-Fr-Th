@@ -51,7 +51,7 @@ if (file_exists('source.xml')) {
                     <nav class="nav flex-row font-weight-bold">
                         <?php //boucle pour afficher les menus 
                        for($count = 0; $count < count($libMenu); $count++){ ?>
-                        <a class="nav-link text-warning" href="page=<?=$count?>.html"><?= $libMenu[$count] ?></a>
+                        <a class="nav-link text-warning" href="page<?=$count?>.html"><?= $libMenu[$count] ?></a>
                       <?php
                        } 
                        ?>
