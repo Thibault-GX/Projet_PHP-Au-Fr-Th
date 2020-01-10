@@ -1,33 +1,34 @@
-<footer>
-    <div class="card">
-
-        <div class="card-body">
-
-            <div class="row">
-                <div class="offset-1 col-md-4">
-                    <h5 class="card-title ">A propos</h5>
-
-                    <p class="card-text" >Ocordo Travaux est une agence de travaux spécialisée dans les travaux de rénovation et de construction d’extension. 
-                        Nous assurons le service commercial d’un réseau de plus de 200 entreprises du bâtiment. 
-                        Nous avons l’expérience de plus de 3000 projets de rénovations de maisons, rénovations d’appartements, 
-                        rénovations énergétiques et de constructions d’extensions de maisons.</p>
-                </div>
-                <div class="col-md-2">
-                    <a href="index.php"><img class="logo1" src="assets/img/logo.png" /></a>
-                </div>
-                <div class="offset-1 col-md-2">
-                    <h5 class="card-title">liens utiles</h5>
-                    <div class="card-text" >
-                        <div><a href="https://www.ocordo-travaux.fr/actualites/">Actualités</a></div>
-                        <div><a href="https://www.ocordo-travaux.fr/devis-travaux-contact/">Contact</a></div>
-                        <div><a href="https://www.ocordo-travaux.fr/plan-du-site/">Plan du site</a></div>
-                        <a href="https://www.facebook.com/Agence-Ocordo-Travaux-123901887644073/"><i class="fab fa-facebook-square" ></i></a>
-                        <a href="https://www.linkedin.com/company/ocordo-travaux/"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <a href="#" id="up"><i class="fas fa-angle-up"></i></a>
-
+<footer class="p-5">
+    <div class="container-fluid alignText">
+        <div class="row">
+            <div class="col-md-3 col-lg-4 col-xl-3 textColor">
+                <h4 class="text-uppercase font-weight-bold"><img class ="imgShadow" src="assets/img/Screenshot_2018-09-11 Ocordo Travaux Nantes - Entreprise de rénovation et construction.png" /></h4>
+                <p>
+                    Devis gratuits
+                </p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3 textColor">
+                <h4  class="text-uppercase font-weight-bold"><img class ="imgShadow" src="assets/img/Screenshot_2018-09-11 Ocordo Travaux Nantes - Entreprise de rénovation et construction(1).png" /></h4>
+                <p>
+                    Entreprise de proximité
+                </p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3 textColor">
+                <h4  class="text-uppercase font-weight-bold"><img class ="imgShadow" src="assets/img/Screenshot_2018-09-11 Ocordo Travaux Nantes - Entreprise de rénovation et construction(2).png" /></h4>
+                <p>
+                    Meilleur rapport qualité/prix
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3 textColor">
+                <h4  class="text-uppercase font-weight-bold"><img class ="imgShadow" src="assets/img/Screenshot_2018-09-11 Ocordo Travaux Nantes - Entreprise de rénovation et construction(3).png" /></h4>
+                <p>
+                    Satisfaction clients
+                </p>
             </div>
         </div>
-    </div>
+    </div>          
 </footer>
+ <div id="copyright" class="container-fluid alignText"
+            <div class="col-md-12 col-lg-12 col-xl-12 textColor">
+                <p>© 2018 Copyright : <a href="https://nantes-ocordo-travaux.fr/">Ocordo</a> </p>
+                </div>
+</div>  
