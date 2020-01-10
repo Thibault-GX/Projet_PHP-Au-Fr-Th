@@ -1,4 +1,5 @@
-<?php
+<?php include 'controlformulaire.php';
+
 if (!empty($_GET['param'])) {
     $param = $_GET['param'];
 } else {
@@ -18,7 +19,20 @@ if (file_exists('source.xml')) {
             $title = $enfant->nodeValue; //réccupération du titre
         }
     }
-}
+    //réccupération des valeurs des balises menu
+    $libMenu = []; 
+    $valueMenu1 = '';
+    $count = 0;
+    //pour chaque éléments des balises, on réccupère les valeurs concaténées dans une chaine
+
+    foreach( $exp as $expvalue )
+    {
+       $xmlMenu = $expvalue->getElementsByTagName( "menu" );
+        $valueMenu = $xmlMenu->item(0)->nodeValue;
+        $libMenu[$count] = $valueMenu;
+        $count ++;
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -30,34 +44,40 @@ if (file_exists('source.xml')) {
         <title><?= $title ?></title>
     </head>
     <body>
-
-        <div class="container bg-secondary">
+         <div class="container bg-secondary">
             <h1 class="text-center text-dark">Maçonnerie Ocordo</h1>
             <div class="row bg-info">
-                <div class="col-2 bg-primary">
-                    <nav class="nav flex-column font-weight-bold">
-                        <a class="nav-link text-warning" href="page1.html">Page 1</a>
-                        <a class="nav-link text-warning" href="page2.html">Page 2</a>
-                        <a class="nav-link text-warning" href="page3.html">Page 3</a>
-                        <a class="nav-link text-warning" href="page4.html">Page 4</a>
+                <div class="col-12 bg-primary">
+                    <nav class="nav flex-row font-weight-bold">
+                        <?php //boucle pour afficher les menus 
+                       for($count = 0; $count < count($libMenu); $count++){ ?>
+                        <a class="nav-link text-warning" href="page=<?=$count?>.html"><?= $libMenu[$count] ?></a>
+                      <?php
+                       } 
+                       ?>
                     </nav>
                 </div>
-
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
                     if ($affiche) {
-                        //$element = $exp->item($param); // On obtient le noeud de la page
-                        //$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
                         foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
                             $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
-                            echo $enfant->nodeValue;
+                            if ($nom == 'title' || $nom == 'menu') {
+                                $title = $enfant->nodeValue; //réccupération du titre
+                                $enfant->nodeValue = '';
+                            }else{
+                                echo $enfant->nodeValue;
+                            }
                         }
                     }
                     ?>
                 </div>
             </div>
+             <?php
+            include 'footer.php';
+            ?>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="assets/js/script.js"></script>
