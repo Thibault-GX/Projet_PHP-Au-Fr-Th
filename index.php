@@ -71,6 +71,15 @@ if (file_exists('source.xml')) {
                         }
                     }
                     ?>
+  <?php if (isset($_POST['Envoi']) && (count($formError) == 0)) { ?>
+            <?php } else { ?>
+                <p><?= !empty($formError['your-name']) ? $formError['your-name'] : '' ?></p>
+                <p><?= !empty($formError['your-tel-615']) ? $formError['your-tel-615'] : '' ?></p>
+                <p><?= !empty($subjectError) ? $subjectError : '' ?></p>
+                <p><?= !empty($countryError) ? $countryError : '' ?></p>
+                <p><?= !empty($formError['your-message']) ? $formError['your-message'] : '' ?></p>
+                <p><?= !empty($emailError) ? $emailError : '' ?></p>
+            <?php } ?>
                 </div>
             </div>
              <?php
