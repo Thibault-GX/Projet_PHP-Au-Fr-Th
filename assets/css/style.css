@@ -15,10 +15,16 @@ a:hover {
 }
 #xmlPagesContent {
   background-color: #dbdbdb;
+  margin-top: 10rem;
 }
 body {
   background-color: #1e1e1e;
 }
 footer {
   background-color: #1e1e1e;
+}
+@media (max-width: 768px) {
+  #contactAndAdressNav {
+    display: none;
+  }
 }

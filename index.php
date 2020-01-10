@@ -57,8 +57,8 @@ if (file_exists('source.xml')) {
 <body>
   <div class="container">
     <div class="row">
-      <div id="navSettings">
-        <nav class="nav justify-content-center font-weight-bold">
+      <div>
+        <nav id="navSettings" class="nav justify-content-center font-weight-bold fixed-top">
           <a class="nav-link col-md-2" href="page1.html"><img id="logoNav" src="assets/img/logo.png" alt="logo Ocordo"></a>
           <?php
           // Display the values of the <menu> inside the navbar
@@ -67,36 +67,45 @@ if (file_exists('source.xml')) {
             <?php
           }
           ?>
-          <div class="col-md-2">
+          <div id="contactAndAdressNav" class="col-md-2">
             <p class="text-warning">03 22 72 22 22</p>
             <p>31 Rue Alexandre</p>
             <p>80000 Amiens</p>
-        </div>
+          </div>
         </nav>
-      <div id='xmlPagesContent' class="d-flex flex-column align-items-center justify-content-center col-12">
-        <?php
-        // Prevent the <title> from displaying outside of the <head>
-        if ($sendForm) {
-          foreach ($children as $child) {
-            $name = $child->nodeName;
-            if ($name == 'title' || $name == 'menu') {
-              $title = $child->nodeValue;
-              $child->nodeValue = '';
-            }else{
-              echo $child->nodeValue;
+        <div id='xmlPagesContent' class="d-flex flex-column justify-content-center col-12">
+          <?php
+          // Prevent the <title> from displaying outside of the <head>
+          if ($sendForm) {
+            foreach ($children as $child) {
+              $name = $child->nodeName;
+              if ($name == 'title' || $name == 'menu') {
+                $title = $child->nodeValue;
+                $child->nodeValue = '';
+              }else{
+                echo $child->nodeValue;
+              }
             }
           }
-        }
-        ?>
+          if (isset($_POST['Envoi']) && (count($formError) == 0)) { ?>
+          <?php } else { ?>
+            <p><?= !empty($formError['your-name']) ? $formError['your-name'] : '' ?></p>
+            <p><?= !empty($formError['your-tel-615']) ? $formError['your-tel-615'] : '' ?></p>
+            <p><?= !empty($subjectError) ? $subjectError : '' ?></p>
+            <p><?= !empty($countryError) ? $countryError : '' ?></p>
+            <p><?= !empty($formError['your-message']) ? $formError['your-message'] : '' ?></p>
+            <p><?= !empty($emailError) ? $emailError : '' ?></p>
+          <?php }
+          ?>
+        </div>
       </div>
+      <?php
+      include 'footer.php';
+      ?>
     </div>
-    <?php
-    include 'footer.php';
-    ?>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+  </html>
