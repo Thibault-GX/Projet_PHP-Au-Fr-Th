@@ -52,14 +52,20 @@ if (file_exists('source.xml')) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/88460e48d7.js" crossorigin="anonymous"></script>
   <title><?= $title ?></title>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div>
-        <nav id="navSettings" class="nav justify-content-center font-weight-bold fixed-top">
-          <a class="nav-link col-md-2" href="page1.html"><img id="logoNav" src="assets/img/logo.png" alt="logo Ocordo"></a>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <!-- Navbar debut -->
+      <nav id="navSettings" class="row navbar navbar-expand-md justify-content-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-warning"><i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+          <a class="nav-link col-md-2 logoNav" href="page1.html"><img class="logoNav" src="assets/img/logo.png" alt="logo Ocordo"></a>
           <?php
           // Display the values of the <menu> inside the navbar
           for($count = 0; $count < count($libMenu); $count++){ ?>
@@ -67,14 +73,14 @@ if (file_exists('source.xml')) {
             <?php
           }
           ?>
-          <div id="contactAndAdressNav" class="col-md-2">
+          <div id="contactAndAdressNav" class="col-md-2 mt-2">
             <p class="text-warning">03 22 72 22 22</p>
             <p>31 Rue Alexandre</p>
             <p>80000 Amiens</p>
           </div>
         </nav>
-        <div id='xmlPagesContent' class="d-flex flex-column justify-content-center col-12">
-
+        <!-- Navbar end -->
+        <div id='xmlPagesContent' class="d-flex flex-column align-items-center justify-content-center col-12">
           <?php
           // Prevent the <title> from displaying outside of the <head>
           if ($sendForm) {
