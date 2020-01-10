@@ -1,8 +1,24 @@
-button {
-  margin-top: 20px;
-  line-height: 60px;
-  font-weight: bold;
-  padding: 0 40px;
-  background: grey;
-  border: none;
+#navSettings {
+  background-color: #ffffff;
+  width: 100vw;
+}
+#logoNav {
+  max-height: 5rem;
+}
+.navLinkSettings {
+  color: #7c7c7c;
+  font-size: 1rem;
+  margin: auto;
+}
+a:hover {
+  color: #3f3f3f;
+}
+#xmlPagesContent {
+  background-color: #dbdbdb;
+}
+body {
+  background-color: #1e1e1e;
+}
+footer {
+  background-color: #1e1e1e;
 }
