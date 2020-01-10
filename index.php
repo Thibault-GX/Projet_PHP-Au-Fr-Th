@@ -57,8 +57,8 @@ if (file_exists('source.xml')) {
 <body>
   <div class="container">
     <div class="row">
-      <div id="navSettings">
-        <nav class="nav justify-content-center font-weight-bold">
+      <div>
+        <nav id="navSettings" class="nav justify-content-center font-weight-bold fixed-top">
           <a class="nav-link col-md-2" href="page1.html"><img id="logoNav" src="assets/img/logo.png" alt="logo Ocordo"></a>
           <?php
           // Display the values of the <menu> inside the navbar
@@ -67,13 +67,14 @@ if (file_exists('source.xml')) {
             <?php
           }
           ?>
-          <div class="col-md-2">
+          <div id="contactAndAdressNav" class="col-md-2">
             <p class="text-warning">03 22 72 22 22</p>
             <p>31 Rue Alexandre</p>
             <p>80000 Amiens</p>
           </div>
         </nav>
-        <div id='xmlPagesContent' class="d-flex flex-column align-items-center justify-content-center col-12">
+        <div id='xmlPagesContent' class="d-flex flex-column justify-content-center col-12">
+
           <?php
           // Prevent the <title> from displaying outside of the <head>
           if ($sendForm) {
