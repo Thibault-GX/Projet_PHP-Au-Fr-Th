@@ -1,4 +1,5 @@
-<?php
+<?php include 'controlformulaire.php';
+
 if (!empty($_GET['param'])) {
     $param = $_GET['param'];
 } else {
@@ -18,12 +19,12 @@ if (file_exists('source.xml')) {
             $title = $enfant->nodeValue; //réccupération du titre
         }
     }
-    
     //réccupération des valeurs des balises menu
     $libMenu = []; 
     $valueMenu1 = '';
     $count = 0;
     //pour chaque éléments des balises, on réccupère les valeurs concaténées dans une chaine
+
     foreach( $exp as $expvalue )
     {
        $xmlMenu = $expvalue->getElementsByTagName( "menu" );
@@ -59,8 +60,6 @@ if (file_exists('source.xml')) {
                 <div id="exercicesContent" class="ml-5 mb-3 mt-3 d-flex flex-column align-items-center justify-content-center col-10">
                     <?php
                     if ($affiche) {
-                        //$element = $exp->item($param); // On obtient le noeud de la page
-                        //$enfants = $element->childNodes; // On récupère les noeuds enfants du noeud de la page
                         foreach ($enfants as $enfant) { // On prend chaque noeud enfant séparément.
                             $nom = $enfant->nodeName; // On prend le nom de chaque noeud.
                             if ($nom == 'title' || $nom == 'menu') {
@@ -74,8 +73,11 @@ if (file_exists('source.xml')) {
                     ?>
                 </div>
             </div>
+             <?php
+            include 'footer.php';
+            ?>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="assets/js/script.js"></script>
