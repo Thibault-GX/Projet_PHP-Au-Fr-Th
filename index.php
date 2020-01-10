@@ -74,6 +74,7 @@ if (file_exists('source.xml')) {
           </div>
         </nav>
         <div id='xmlPagesContent' class="d-flex flex-column justify-content-center col-12">
+
           <?php
           // Prevent the <title> from displaying outside of the <head>
           if ($sendForm) {
